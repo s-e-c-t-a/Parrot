@@ -1,0 +1,27 @@
+ <nav class="navbar navbar-inverse">
+  <a class="navbar-brand mb-0 h1" href="/">Snappy</a>
+    <button class="navbar-toggle" type="button"  data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="badge badge-dark mr-2" id="navbarColor05">
+          <ul class="nav navbar-nav">
+            <li class="badge badge-dark mr-2"><%= link "Все пользователи", to: user_path(@conn, :index), class: "nav-link" %></li>
+            <li class="badge badge-dark mr-2">
+              <a class="badge badge-dark mr-1" href="#">FeaturesХЗ</a>
+            </li>
+          </ul>
+      </div>
+          
+      <div class="text-right">
+        <%= if logged_in?(@conn) do %>
+          <span class="text-right"><%= current_user(@conn).username %></span>
+          <%= link "Logout", to: session_path(@conn, :delete), method: :delete, class: "btn btn-secondary" %>
+        <% else %>
+          <%= link "Login", to: session_path(@conn, :new), class: "btn btn-primary" %>
+          <%= link "Register", to: user_path(@conn, :new), class: "btn btn-secondary" %>
+        <% end %>
+      </div>
+   
+  </nav>
+
